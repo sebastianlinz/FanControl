@@ -1,8 +1,9 @@
 const ZwiftAccount = require("zwift-mobile-api");
+var logger = require('./logger');
 
 class ZwiftAdapter {
     constructor(username, password, playerId) {
-        console.log("ZwiftAdapter.constructor()");
+        logger.debug("ZwiftAdapter.constructor()");
         this.account = new ZwiftAccount(username, password);
         this.playerId = playerId;
         this.speed = 0;
@@ -11,9 +12,9 @@ class ZwiftAdapter {
 
         this.account.getWorld(1).riders()
             .then(riders => {
-                console.log('playerId: ' + JSON.stringify(riders.friendsInWorld[5].playerId));
+                logger.debug('playerId: ' + JSON.stringify(riders.friendsInWorld[5].playerId));
             }).catch ( error => { 
-                console.log(JSON.stringify(error))
+                logger.error(JSON.stringify(error))
             });
 
     }
@@ -26,7 +27,7 @@ class ZwiftAdapter {
             this.updateSpeed(status.speed/1000000, status.heartrate, status.power);
         })
         .catch(error => {
-            console.log("couldn't resolve promise riderStatus")
+            logger.error("couldn't resolve promise riderStatus")
         });
         return this.speed;
     }
@@ -40,7 +41,7 @@ class ZwiftAdapter {
     }
 
     updateSpeed(spd, hr, pwr) {
-        console.log('updateSpeed() new speed: ' + spd + ' hr: ' + hr + ' pwr: ' + pwr);
+        logger.debug('updateSpeed() new speed: ' + spd + ' hr: ' + hr + ' pwr: ' + pwr);
         this.speed = spd;
         this.heartrate = hr;
         this.power = pwr;

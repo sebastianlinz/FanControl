@@ -4,9 +4,24 @@
  * Module dependencies.
  */
 
+var logger = require('../logger');
+/**
+ * Setup winston logger
+ */
+logger.addFile({
+  level: 'debug',
+  filename: "./log/fancontrol.log",
+  handleExceptions: true,
+  json: true,
+  maxsize: 5242880, //5MB
+  maxFiles: 5,
+  colorize: false
+});
+
 var app = require('../app');
 var debug = require('debug')('fancontrolapp:server');
 var http = require('http');
+
 
 /**
  * Get port from environment and store in Express.

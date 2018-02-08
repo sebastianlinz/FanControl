@@ -3,6 +3,8 @@ var pad = require('pad-number');
 var roundTo = require('round-to');
 var router = express.Router();
 require('../ZwiftAdapter');
+var config = require('../config.js');
+var logger = require('../logger');
 
 // set DEBUG=express:* & npm start
 
@@ -47,25 +49,25 @@ router.get('/getFanLevel', function(req, res, next) {
   var fanLevel = 0;
   var power = 0;
   var heartrate = 0;
-  console.log("fanState: " + fanState);
+  logger.debug("fanState: " + fanState);
   if (fanState == 4) {
     try {
       var zwiftAdapter = req.app.get('zwiftAdapter');
       speed = zwiftAdapter.getSpeed();
       power = zwiftAdapter.getPower();
       heartrate = zwiftAdapter.getHeartrate();
-      if (!Number.isNaN(speed) && speed < 6) {
+      if (!Number.isNaN(speed) && speed < config.speedLevel1) {
         fanLevel = 0;
-      } else if (!Number.isNaN(speed) && speed >= 6 && speed < 24) {
+      } else if (!Number.isNaN(speed) && speed >= config.speedLevel1 && speed < config.speedLevel2) {
         fanLevel = 1;
-      } else if (!Number.isNaN(speed) && speed >= 24 && speed < 32) {
+      } else if (!Number.isNaN(speed) && speed >= config.speedLevel2 && speed < config.speedLevel3) {
         fanLevel = 2;
-      } else if (!Number.isNaN(speed) && speed >= 32) {
+      } else if (!Number.isNaN(speed) && speed >= config.speedLevel3) {
         fanLevel = 3;
       } 
-      console.log("speed: " + speed);
+      logger.debug("speed: " + speed);
     } catch (err) {
-      console.log(err);
+      logger.error(err);
     }
   }
   // res.json({ fanState: fanState, speed: speed, fanLevel: fanLevel, power: power, heartrate: heartrate });
