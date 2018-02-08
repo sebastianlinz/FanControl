@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= "Ventilator-Steuerung"
+  a(class='button', href='fanStateOff') 
+    if fanState == 0
+      div.button_selected AUS
+    else
+      div.button AUS
+  a(class='button', href='fanStateLevel1')
+    if fanState == 1
+      div.button_selected I
+    else 
+      div.button I
+  a(class='button', href='fanStateLevel2') 
+    if fanState == 2
+      div.button_selected II
+    else
+      div.button II
+  a(class='button', href='fanStateLevel3') 
+    if fanState == 3
+      div.button_selected III
+    else
+      div.button III
+  a(class='button', href='fanStateZwiftSim') 
+    if fanState == 4
+      div.button_selected Zwift-Sim
+    else
+      div.button Zwift-Sim
+  a(class='button', href='getFanLevel') 
+    div.button Get Fan State
+  

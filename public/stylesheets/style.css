@@ -1,0 +1,43 @@
+body {
+  background-color: #ECEFF1;
+  padding: 10px;
+  font: 14px "Roboto", "Noto", "Lucida Grande", "Helvetica", "Arial", "sans-serif";
+}
+
+a {
+  text-decoration: none;
+}
+
+div.button {
+  background-color: #CFD8DC; /* Green */
+  border: none;
+  border-radius: 4px;
+  color: black;
+  padding: 48px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 32px;
+  margin: 5px;
+}
+
+div.button:hover {
+  background-color: #B0BEC5;
+}
+
+div.button_selected {
+  background-color: #90A4AE; /* Green */
+  border: none;
+  border-radius: 4px;
+  color: black;
+  padding: 48px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 32px;
+  margin: 5px;
+}
+
+div.button_selected:hover {
+  background-color: #B0BEC5;
+}
