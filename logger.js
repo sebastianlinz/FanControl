@@ -7,7 +7,6 @@ logger.addConsole = function(config) {
 };
 
 logger.addFile = function(config) {
-    console.log(JSON.stringify(config));
     logger.add (winston.transports.File, config);
 };
 
