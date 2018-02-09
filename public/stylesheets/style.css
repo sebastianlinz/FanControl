@@ -21,7 +21,7 @@ div.button {
   text-align: center;
   text-decoration: none;
   display: block;
-  font-size: 32px;
+  font-size: 48px;
   margin: 5px;
 }
 
@@ -38,7 +38,7 @@ div.button_selected {
   text-align: center;
   text-decoration: none;
   display: block;
-  font-size: 32px;
+  font-size: 48px;
   margin: 5px;
 }
 
