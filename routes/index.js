@@ -20,21 +20,25 @@ router.get('/', function(req, res, next) {
 
 router.get('/fanStateOff', function(req, res, next) {
   req.app.set('fanState', 0);
+  req.app.set('fanLevel', 0);
   res.render('index', { fanState: 0 });
 });
 
 router.get('/fanStateLevel1', function(req, res, next) {
   req.app.set('fanState', 1);
+  req.app.set('fanLevel', 1);
   res.render('index', {  fanState: 1 });
 });
 
 router.get('/fanStateLevel2', function(req, res, next) {
   req.app.set('fanState', 2);
+  req.app.set('fanLevel', 2);
   res.render('index', {  fanState: 2 });
 });
 
 router.get('/fanStateLevel3', function(req, res, next) {
   req.app.set('fanState', 3);
+  req.app.set('fanLevel', 3);
   res.render('index', {  fanState: 3 });
 });
 
@@ -46,10 +50,10 @@ router.get('/fanStateZwiftSim', function(req, res, next) {
 router.get('/getFanLevel', function(req, res, next) {
   var fanState = req.app.get('fanState');
   var speed = 0;
-  var fanLevel = 0;
+  var fanLevel = req.app.get('fanLevel');
   var power = 0;
   var heartrate = 0;
-  logger.debug("fanState: " + fanState);
+  logger.debug("fanState: " + fanState + ", fanLevel: " + fanLevel);
   if (fanState == 4) {
     try {
       var zwiftAdapter = req.app.get('zwiftAdapter');
@@ -65,6 +69,7 @@ router.get('/getFanLevel', function(req, res, next) {
       } else if (!Number.isNaN(speed) && speed >= config.speedLevel3) {
         fanLevel = 3;
       } 
+      req.app.set('fanLevel', fanLevel);
       logger.debug("speed: " + speed);
     } catch (err) {
       logger.error(err);

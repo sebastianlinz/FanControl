@@ -4,6 +4,10 @@ body {
   font: 14px "Roboto", "Noto", "Lucida Grande", "Helvetica", "Arial", "sans-serif";
 }
 
+h1 {
+  font-size: 64px;
+}
+
 a {
   text-decoration: none;
 }

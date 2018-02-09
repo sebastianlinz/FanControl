@@ -45,6 +45,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.set('fanState', 0);
+app.set('fanLevel', 0);
 app.set('zwiftAdapter', new ZwiftAdapter(config.username, config.password, config.playerId));
 
 module.exports = app;

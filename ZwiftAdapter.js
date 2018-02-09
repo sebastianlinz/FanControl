@@ -12,7 +12,7 @@ class ZwiftAdapter {
 
         this.account.getWorld(1).riders()
             .then(riders => {
-                logger.debug('playerId: ' + JSON.stringify(riders.friendsInWorld[5].playerId));
+                logger.debug('playerId: ' + JSON.stringify(riders.friendsInWorld[20].playerId));
             }).catch ( error => { 
                 logger.error(JSON.stringify(error))
             });
