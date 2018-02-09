@@ -16,7 +16,7 @@
     "pad": "^2.0.3",
     "pad-number": "0.0.4",
     "round-to": "^2.0.0",
-    "serve-favicon": "~2.4.5",
+    "serve-favicon": "^2.4.5",
     "winston": "^2.4.0",
     "zwift-mobile-api": "^0.3.3"
   },
