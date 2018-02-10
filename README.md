@@ -5,17 +5,23 @@ A web-application to control a fan by a photon. The web-application controls fan
 
 At 8th position the fan level is tramitted.
 
-`FCS` meens fan controller state. There are five states:
+`FCS` meens fan controller state. There are five fan controller states:
+
 `0` fan off
+
 `1` fan level one
+
 `2` fan level two
+
 `3` fan level three
+
 `4` Zwift simulation: according to the nearly actual speed ridden in Zwift the fan level is set. Fan levels are configured in `configure.js` 
 ```
 module.exports.speedLevel1
 module.exports.speedLevel2
 module.exports.speedLevel3
 ```
+
 `5` Zwift workout mode: the fan level is set dependent from power in Zwift if heartrate is above a defined level configured in `configure.js`
 ```
 module.exports.heartrate = 125;
