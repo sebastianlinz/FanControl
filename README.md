@@ -34,5 +34,3 @@ module.exports.powerLevel3 = 250;
 The code for photon is in directory `photon-src`. Here you define the IP address of host running the node.js-app and the port.
 
 Thanks a lot to Just Vervaart and Ogadai. 
-
-Configure the app in configure.js.
