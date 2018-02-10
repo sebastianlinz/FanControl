@@ -1,5 +1,5 @@
 // ------------
-// Blink an LED
+// Fan Controller
 // ------------
 
 #include <stdlib.h>
