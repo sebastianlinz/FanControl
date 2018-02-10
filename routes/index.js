@@ -22,34 +22,40 @@ router.get('/fanStateOff', function(req, res, next) {
   req.app.set('fanState', 0);
   req.app.set('fanLevel', 0);
   res.render('index', { fanState: 0 });
+  logger.debug("/fanStateOff fanState: " + req.app.get('fanState') + ", fanLevel: [" + req.app.get('fanLevel') + "]");
 });
 
 router.get('/fanStateLevel1', function(req, res, next) {
   req.app.set('fanState', 1);
   req.app.set('fanLevel', 1);
   res.render('index', {  fanState: 1 });
+  logger.debug("/fanStateLevel1 fanState: " + req.app.get('fanState') + ", fanLevel: [" + req.app.get('fanLevel') + "]");
 });
 
 router.get('/fanStateLevel2', function(req, res, next) {
   req.app.set('fanState', 2);
   req.app.set('fanLevel', 2);
   res.render('index', {  fanState: 2 });
+  logger.debug("/fanStateLevel2 fanState: " + req.app.get('fanState') + ", fanLevel: [" + req.app.get('fanLevel') + "]");
 });
 
 router.get('/fanStateLevel3', function(req, res, next) {
   req.app.set('fanState', 3);
   req.app.set('fanLevel', 3);
   res.render('index', {  fanState: 3 });
+  logger.debug("/fanStateLevel3 fanState: " + req.app.get('fanState') + ", fanLevel: [" + req.app.get('fanLevel') + "]");
 });
 
 router.get('/fanStateZwiftSim', function(req, res, next) {
   req.app.set('fanState', 4);
   res.render('index', {  fanState: 4 });
+  logger.debug("/fanStateZwiftSim fanState: " + req.app.get('fanState') + ", fanLevel: [" + req.app.get('fanLevel') + "]");
 });
 
 router.get('/fanStateZwiftWrkt', function(req, res, next) {
   req.app.set('fanState', 5);
   res.render('index', {  fanState: 5 });
+  logger.debug("/fanStateZwiftWrkt fanState: " + req.app.get('fanState') + ", fanLevel: [" + req.app.get('fanLevel') + "]");
 });
 
 router.get('/getFanLevel', function(req, res, next) {
