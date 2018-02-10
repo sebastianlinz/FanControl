@@ -47,13 +47,18 @@ router.get('/fanStateZwiftSim', function(req, res, next) {
   res.render('index', {  fanState: 4 });
 });
 
+router.get('/fanStateZwiftWrkt', function(req, res, next) {
+  req.app.set('fanState', 5);
+  res.render('index', {  fanState: 5 });
+});
+
 router.get('/getFanLevel', function(req, res, next) {
   var fanState = req.app.get('fanState');
   var speed = 0;
   var fanLevel = req.app.get('fanLevel');
   var power = 0;
   var heartrate = 0;
-  logger.debug("fanState: " + fanState + ", fanLevel: " + fanLevel);
+  logger.debug("/getFanLevel fanState: " + fanState + ", fanLevel: [" + fanLevel + "]");
   if (fanState == 4) {
     try {
       var zwiftAdapter = req.app.get('zwiftAdapter');
@@ -70,7 +75,29 @@ router.get('/getFanLevel', function(req, res, next) {
         fanLevel = 3;
       } 
       req.app.set('fanLevel', fanLevel);
-      logger.debug("speed: " + speed);
+      logger.debug("/getFanLevel fanState: " + fanState + ", fanLevel: [" + fanLevel + "], hr: " + heartrate + ", speed: " + speed);
+    } catch (err) {
+      logger.error(err);
+    }
+  } else if (fanState == 5) {
+    try {
+      var zwiftAdapter = req.app.get('zwiftAdapter');
+      speed = zwiftAdapter.getSpeed();
+      power = zwiftAdapter.getPower();
+      heartrate = zwiftAdapter.getHeartrate();
+      if (!Number.isNaN(speed) && !Number.isNaN(heartrate) && heartrate > config.heartrate) {
+        if (power < config.powerLevel1) {
+          fanLevel = 0;
+        } else if (power >= config.powerLevel1 && power < config.powerLevel2) {
+          fanLevel = 1;
+        } else if (power >= config.powerLevel2 && power < config.powerLevel3) {
+          fanLevel = 2;
+        } else if (power >= config.powerLevel3) {
+          fanLevel = 3;
+        }
+      }
+      req.app.set('fanLevel', fanLevel);
+      logger.debug("/getFanLevel fanState: " + fanState + ", fanLevel: [" + fanLevel + "], hr: " + heartrate + ", power: " + power);
     } catch (err) {
       logger.error(err);
     }

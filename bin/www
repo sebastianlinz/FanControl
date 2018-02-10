@@ -21,7 +21,7 @@ logger.addFile({
 logger.addConsole({
   level: 'debug',
   handleExceptions: true,
-  json: true,
+  json: false,
   colorize: true
 });
 

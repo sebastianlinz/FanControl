@@ -24,9 +24,14 @@ block content
       div.button III
   a(class='button', href='fanStateZwiftSim') 
     if fanState == 4
-      div.button_selected Zwift-Sim
+      div.button_selected Zwift-Simulation
     else
-      div.button Zwift-Sim
+      div.button Zwift-Simulation
+  a(class='button', href='fanStateZwiftWrkt') 
+    if fanState == 5
+      div.button_selected Zwift-Workout
+    else
+      div.button Zwift-Workout
   a(class='button', href='getFanLevel') 
     div.button Get Fan State
   
