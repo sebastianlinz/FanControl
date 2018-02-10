@@ -101,6 +101,8 @@ router.get('/getFanLevel', function(req, res, next) {
         } else if (power >= config.powerLevel3) {
           fanLevel = 3;
         }
+      } else {
+        fanLevel = 0;
       }
       req.app.set('fanLevel', fanLevel);
       logger.debug("/getFanLevel fanState: " + fanState + ", fanLevel: [" + fanLevel + "], hr: " + heartrate + ", power: " + power);
