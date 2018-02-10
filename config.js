@@ -4,7 +4,7 @@ module.exports.username = "";
 module.exports.password = "";
 // Zwift player id (find the playerId on your PC running the Zwift client. There is a folder named userXXXXXX. These
 // numbers are the playerId.)
-module.exports.playerId = "209986";
+module.exports.playerId = "";
 
 // Zwift simuation mode, level to switch fan to 1st level
 module.exports.speedLevel1 = 10;
