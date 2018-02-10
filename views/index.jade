@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  h1= "Ventilator-Steuerung"
+  h1= "Fan Control"
   a(class='button', href='fanStateOff') 
     if fanState == 0
-      div.button_selected AUS
+      div.button_selected OFF
     else
-      div.button AUS
+      div.button OFF
   a(class='button', href='fanStateLevel1')
     if fanState == 1
       div.button_selected I
