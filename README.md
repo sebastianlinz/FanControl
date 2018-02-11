@@ -1,11 +1,18 @@
-# Fan Control node.js application
+# Fan Control solution with optional Zwift connection
 
-A web-application to control a fan by a photon. The web-application controls fan's state and provides it to photon. The photon makes a HTTP request and gets back a simple line of text containing the desired fan level. The line looks like this: 
-> FCS4FLV1PWR0095HR110SPD027.3
+A web-application to control a fan by a photon. The web-application controls fan's state and provides it to photon. 
 
-At 8th position the fan level is tramitted.
+## Modes and configuration
 
-`FCS` meens fan controller state. There are five fan controller states:
+The photon makes a HTTP request to the node.js-app and gets back a simple line of text containing the desired fan level. The line looks like this: 
+
+```
+FCS4FLV1PWR0095HR110SPD027.3
+```
+
+At 8th position the fan level is tramitted (eg. 1).
+
+`FCS` meens fan controller state which represents one of different modes of operation:
 
 `0` fan off
 
@@ -17,9 +24,9 @@ At 8th position the fan level is tramitted.
 
 `4` Zwift simulation: according to the nearly actual speed ridden in Zwift the fan level is set. Fan levels are configured in `configure.js` 
 ```
-module.exports.speedLevel1
-module.exports.speedLevel2
-module.exports.speedLevel3
+module.exports.speedLevel1 = 10;
+module.exports.speedLevel2 = 30;
+module.exports.speedLevel3 = 40;
 ```
 
 `5` Zwift workout mode: the fan level is set dependent from power in Zwift if heartrate is above a defined level configured in `configure.js`
@@ -34,3 +41,8 @@ module.exports.powerLevel3 = 250;
 The code for photon is in directory `photon-src`. Here you define the IP address of host running the node.js-app and the port.
 
 Thanks a lot to Just Vervaart and Ogadai. 
+
+## Installation node.js app
+
+## Installation photon app
+

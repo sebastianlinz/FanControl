@@ -102,7 +102,7 @@ router.get('/getFanLevel', function(req, res, next) {
           fanLevel = 3;
         }
       } else {
-          fanLevel = 0;
+        fanLevel = 0;
       }
       req.app.set('fanLevel', fanLevel);
       logger.debug("/getFanLevel fanState: " + fanState + ", fanLevel: [" + fanLevel + "], hr: " + heartrate + ", power: " + power);
