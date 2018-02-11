@@ -8,8 +8,14 @@ var logger = require('../logger');
 /**
  * Setup winston logger
  */
+
+function localTimestamp() {
+  return new Date().toString();
+} 
+
 logger.addFile({
-  level: 'info',
+  level: 'debug',
+  timestamp: localTimestamp,
   filename: "./log/fancontrol.log",
   handleExceptions: true,
   json: true,
@@ -20,6 +26,7 @@ logger.addFile({
 
 logger.addConsole({
   level: 'debug',
+  timestamp: localTimestamp,
   handleExceptions: true,
   json: false,
   colorize: true
