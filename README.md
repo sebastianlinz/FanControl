@@ -38,11 +38,29 @@ module.exports.powerLevel2 = 200;
 module.exports.powerLevel3 = 250;   
 ```
 
-The code for photon is in directory `photon-src`. Here you define the IP address of host running the node.js-app and the port.
-
 Thanks a lot to Just Vervaart and Ogadai. 
+
+Following sections describe how to install node.js app and photon firmware.
 
 ## Installation node.js app
 
+1. Clone or download this repository to the host with node.js installed where you want to run the app.
+2. Install dependent packages eg. npm install.
+3. Configure the app with file `configure.js` as described above and you like. There are a few more comments inline in config file.
+4. Run the app with npm start.
+5. Open the app with a browser `http://localhost:3000` or use the IP of the host, if you want to call the app from your mobile phone from within the same network, which would be the case if your host and mobile phone are connected to same wifi.
+
+### Testing the app
+
+1. Run the app with `npm start`.
+2. Normaly you would test the app not riding on Zwift. You find the playerId of another rider from log file `./log/fancontrol.log` from within the folder where you cloned the respository. There's an line with `playerId: [5-6digits]`.
+3. Copy the playerId from log-file to the configuration `configure.js`
+(If you aren't riding and want to test the app you find the playerId of another rider just riding in log-file `./log/fancontrol.log`
+4. Now restart the application.
+5. Open the app with a browser `http://localhost:3000` or with an mobile phone.
+6. Tap button `Get Fan State`.
+7. You should see a string like this: `FCS4FLV1PWR0095HR110SPD027.3`. If all values are zero, stop the application and repeate from step 2.
+
 ## Installation photon app
 
+The code for photon is in directory `photon-src`. Here you define the IP address of host running the node.js-app and the port.
