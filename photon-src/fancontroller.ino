@@ -23,6 +23,15 @@ loop - runs continuously over and over
 -------------*/
 
 /**
+ * Define your settings here
+ */
+#define RELAY2 D4
+#define RELAY3 D5
+#define RELAY4 D6
+#define HOST_IP "192.168.178.115"
+#define HOST_PORT 3000
+
+/**
 * Declaring the variables.
 */
 unsigned int nextTime = 0;    // Next time to contact the server
@@ -47,9 +56,9 @@ http_response_t response;
 
 void resetPins() {
     Serial.println("FanController.resetPins(): entry.");
-    digitalWrite(D4, LOW);
-    digitalWrite(D5, LOW);
-    digitalWrite(D6, LOW);
+    digitalWrite(RELAY2, LOW);
+    digitalWrite(RELAY3, LOW);
+    digitalWrite(RELAY4, LOW);
     Serial.println("FanController.resetPins(): entry.");
 }
 
@@ -63,13 +72,13 @@ void httpRequestBodyHandler(const char *data) {
         resetPins();
         switch ( flv ) {
             case 1 : 
-                digitalWrite(D4, HIGH);
+                digitalWrite(RELAY2, HIGH);
                 break;
             case 2 :
-                digitalWrite(D5, HIGH);
+                digitalWrite(RELAY3, HIGH);
                 break;
             case 3 :
-                digitalWrite(D6, HIGH);
+                digitalWrite(RELAY4, HIGH);
         }
         fanLevel = flv;
     }
@@ -78,12 +87,12 @@ void httpRequestBodyHandler(const char *data) {
 void setupPins() {
     Serial.println("FanController.setupPins(): entry.");
     
-    pinMode(D4, OUTPUT);
-    Serial.println("FanController.setupPins(): D4 mode OUTPUT");
-    pinMode(D5, OUTPUT);
-    Serial.println("FanController.setupPins(): D5 mode OUTPUT");
-    pinMode(D6, OUTPUT);
-    Serial.println("FanController.setupPins(): D6 mode OUTPUT");
+    pinMode(RELAY2, OUTPUT);
+    Serial.println("FanController.setupPins(): RELAY2 mode OUTPUT");
+    pinMode(RELAY3, OUTPUT);
+    Serial.println("FanController.setupPins(): RELAY3 mode OUTPUT");
+    pinMode(RELAY4, OUTPUT);
+    Serial.println("FanController.setupPins(): RELAY4 mode OUTPUT");
     
     Serial.println("FanController.setupPins(): done.");
 }
@@ -93,9 +102,9 @@ void setupHttpRequest() {
     
     // Request path and body can be set at runtime or at setup.
     // IP of the host running the node.js app
-    request.hostname = "192.168.178.115";  
+    request.hostname = HOST_IP;  
     // port of the node.js express app
-    request.port = 3000;
+    request.port = HOST_PORT;
     request.path = "/getFanLevel";
     
     Serial.println("FanController.setupHttpRequest(): done.");
