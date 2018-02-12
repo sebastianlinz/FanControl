@@ -74,8 +74,8 @@ The fan's power cables are connected to the DC adapter. Connect the DC adapter t
 
 1. Create an particle app in Web IDE (eg. "FanController").
 2. Copy code from file `photon-src/fancontroller.ino` from repository to Web IDE.
-3. Check and eventually replace D4, D5 and D6 according to your wiring (I'm going to refactor this :innocent: ).
-4. Set `request.hostname` and `request.port` according to your settings. The choose the IP address of your host running the node.js app and port 3000 or the one you choosed.
+3. Check and eventually replace the definition of `RELAY2`, `RELAY3` and `RELAY 4` according to your wiring.
+4. Set `HOST_IP` and `HOST_PORT` according to your settings. Choose the IP address of your host running the node.js app and port 3000 or the one you choosed.
 5. Flash the code to the photon.
 
 ### Testing the photon
