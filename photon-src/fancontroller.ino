@@ -106,6 +106,7 @@ void setupHttpRequest() {
     // port of the node.js express app
     request.port = HOST_PORT;
     request.path = "/getFanLevel";
+    Serial.printlnf("FanController.setupHttpRequest(): %s:%d", HOST_IP, HOST_PORT);
     
     Serial.println("FanController.setupHttpRequest(): done.");
 }
